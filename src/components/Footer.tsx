@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import '../css/style.css';
 import { social } from '../data/socialMedia';
 
@@ -5,6 +6,12 @@ import { social } from '../data/socialMedia';
 // https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Realizing_common_layouts_using_grids
 
 export default function Footer() {
+    const navigate: Function = useNavigate();
+
+    const socialData: React.ReactElement[] = social.map((item, i) => { // casually mapping data lol
+        return (<a key={i} href={social[i].src}><div className='socialImgWrapper'><img alt={social[i].title} src={social[i].icon}/></div></a>);
+    });
+
     return(
         <div className="footer">
             <div className="footerGridWrapper">
@@ -14,20 +21,16 @@ export default function Footer() {
                 </div>
                 <div className='footerBox box2'>
                     <div className='footerTitle'>Навигация</div>
-                    <div><a className='hyperlink' href='/'>➤ Главная</a></div>
-                    <div><a className='hyperlink' href='/catalogue'>➤ Каталог</a></div>
-                    <div><a className='hyperlink' href='/random'>➤ Ошибка :)</a></div>
-                    <div><a className='hyperlink' href='/page1'>➤ Ещё страница</a></div>
-                    <div><a className='hyperlink' href='/page2'>➤ Ещё страница</a></div>
+                    <div className='hyperlink' onClick={() => navigate('/')}>➤ Главная</div>
+                    <div className='hyperlink' onClick={() => navigate('/catalogue')}>➤ Каталог</div>
+                    <div className='hyperlink' onClick={() => navigate('/random')}>➤ Ошибка :)</div>
+                    <div className='hyperlink' onClick={() => navigate('/page1')}>➤ Ещё страница</div>
+                    <div className='hyperlink' onClick={() => navigate('/page2')}>➤ Ещё страница</div>
                 </div>
                 <div className='footerBox box3'>
                     <div className='footerTitle'>Мы в социальных сетях</div>
                     <div id='socialWrapper'>
-                        <a href={social[0].src}><div className='socialImgWrapper'><img alt={social[0].title} src={social[0].icon}/></div></a>
-                        <a href={social[1].src}><div className='socialImgWrapper'><img alt={social[1].title} src={social[1].icon}/></div></a>
-                        <a href={social[2].src}><div className='socialImgWrapper'><img alt={social[2].title} src={social[2].icon}/></div></a>
-                        <a href={social[3].src}><div className='socialImgWrapper'><img alt={social[3].title} src={social[3].icon}/></div></a>
-                        <a href={social[4].src}><div className='socialImgWrapper'><img alt={social[4].title} src={social[4].icon}/></div></a>
+                        {socialData}
                     </div>
                 </div>
                 <div className='footerBox box4'>
@@ -39,7 +42,7 @@ export default function Footer() {
                     <div>☎ 12-34-56</div>
                     <div>Пн-пт 6:00-18:00</div>
                 </div>
-                <div className='footerBox box5'>Дубинина Д. С. © 2025</div>
+                <div className='footerBox box5'>InternetDweller © 2025</div>
             </div>
         </div>);
 };

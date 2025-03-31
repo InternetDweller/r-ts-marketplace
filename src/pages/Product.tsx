@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'; //get URL link parameters
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -10,6 +10,8 @@ import { products, TypeProduct } from '../data/productsData';
 export default function Product() {
     let { productid } = useParams<string>();
 
+    const [buttons, setButtons] = useState<Array<boolean>>([false, false, false, false, false]);
+
     const product: TypeProduct | undefined = products.find(product => product.id === Number(productid));
 
     const navigate: Function = useNavigate();
@@ -19,8 +21,12 @@ export default function Product() {
         };
     });
 
-    function reviewsButtonClick(): void {
-        navigate('/reviews');
+    function handleButtonStates(buttonKey: number): void {
+        setButtons(previousState => {
+            const newState: boolean[] = [...previousState];
+            newState[buttonKey] = !newState[buttonKey];
+            return newState;
+        });
     };
 
     return(
@@ -31,19 +37,23 @@ export default function Product() {
                     <div id='productPageName'><b>{product?.name}</b></div>
                     <div></div>
                     <div id='productPageImageWrapper'><img alt={product?.name} src={`/assets/${product?.src}`} /></div>
-                    <div>⭐ {product?.rating} / 5 <Button caption='Отзывы' onClick={reviewsButtonClick}/></div>
-                    <div>{product?.price} ₽</div>
+                    <div>⭐ {product?.rating} / 5 <Button caption='Отзывы' onClick={() => navigate('reviews')}/></div>
+                    <div className='productPagePrice'>{product?.price} ₽</div>
                     <div>
-                        <div>Размеры:</div>
+                        <div className='productPageSubName'>Размеры:</div>
                         <div id='sizes'>
-                            <ToggleButton inStock={product?.size.includes(1) ? true : false} caption='60-62' onClick={null}/>
-                            <ToggleButton inStock={product?.size.includes(2) ? true : false} caption='64-72' onClick={null}/>
-                            <ToggleButton inStock={product?.size.includes(3) ? true : false} caption='76-88' onClick={null}/>
-                            <ToggleButton inStock={product?.size.includes(4) ? true : false} caption='90-100' onClick={null}/>
-                            <ToggleButton inStock={product?.size.includes(5) ? true : false} caption='105-117' onClick={null}/>
+                            <ToggleButton inStock={product?.size.includes(1) ? true : false} caption='60-62' onClick={() => handleButtonStates(0)} pressed={buttons[0]} />
+                            <ToggleButton inStock={product?.size.includes(2) ? true : false} caption='64-72' onClick={() => handleButtonStates(1)} pressed={buttons[1]} />
+                            <ToggleButton inStock={product?.size.includes(3) ? true : false} caption='76-88' onClick={() => handleButtonStates(2)} pressed={buttons[2]} />
+                            <ToggleButton inStock={product?.size.includes(4) ? true : false} caption='90-100' onClick={() => handleButtonStates(3)} pressed={buttons[3]} />
+                            <ToggleButton inStock={product?.size.includes(5) ? true : false} caption='105-117' onClick={() => handleButtonStates(4)} pressed={buttons[4]} />
                         </div>
+                        <span className={buttons.includes(true) ? '' : 'invisible'}><Button caption='✚ В корзину' onClick={null} /></span>
                     </div>
-                    <div>Состав:</div>
+                    <div>
+                        <div className='productPageSubName'>Состав:</div>
+                        <div>{product?.madeof}</div>
+                    </div>
                 </div>
             </div>
             <Footer />

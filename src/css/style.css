@@ -16,12 +16,13 @@
     --colour-secondary-800: #073984;
     --colour-bg: wheat;
     --colour-panel: #fff3de;
+    --colour-panel-darker: #f5e3c5;
 }
 
 body {
     /*display: flex;*/
-    flex-direction: column;
-    height: 100%;
+    /*flex-direction: column;*/
+    /*height: 100%;*/
     background: var(--colour-bg);
     /*justify-content: center;*/
 }
@@ -30,16 +31,126 @@ body {
     display: block;
     /*background: powderblue;*/
     background: var(--colour-panel);
+    padding: 1px;
+    margin: 0.7em 1.5vw 0 1.5vw;
+    border-radius: 7px;
 }
 
-.header ul, li {
+/*.header ul, li {
     list-style: none;
-}
+    margin: 0;
+}*/
 
-#headerRibbon {
+/*#headerRibbon {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+#headerRibbon div {
+    cursor: pointer;
+    background: red;
+    height: inherit;
+}*/
+
+#headerRibbon {
+    display: grid;
+    grid-template-columns: 70px 80px 80px 310px 1fr 70px 70px;
+}
+
+.iconButton img {
+    width: 35px;
+}
+
+.headerGridBox {
+    cursor: pointer;
+    display: flex;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+}
+
+.textButton {
+    font-size: 120%;
+    font-weight: bold;
+    color: var(--colour-primary-400);
+}
+
+.filtered {
+    filter: invert(58%) sepia(13%) saturate(961%) hue-rotate(343deg) brightness(91%) contrast(83%);
+}
+
+.headerGridBox:hover {
+    background: var(--colour-panel-darker);
+}
+
+#logoWrapper {
+}
+
+.headerGridBoxSearch {
+    position: relative;
+    justify-content: left;
+    padding-top: 10px;
+    margin-left: 5px;
+}
+
+.headerGridBoxSearch:hover {
+    cursor: default;
+    background: var(--colour-panel);
+}
+
+/*.headerGridBoxSearch::after {
+    content: '';
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border-bottom: 2px solid red;
+}*/
+
+#searchButtonWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 7px;
+    margin-left: 5px;
+}
+
+#searchButtonWrapper:hover {
+    background: var(--colour-panel-darker);
+}
+
+#searchButtonWrapper img {
+    width: 30px;
+    padding: 5px;
+}
+
+#searchField {
+    cursor: text;
+    /*height: 20px;*/
+    border: none;
+
+    background: var(--colour-panel);
+    border-bottom: 2px solid var(--colour-primary-200);
+    font-size: 100%;
+    font-weight: bold;
+    color: var(--colour-primary-700);
+    width: 35%;
+    height: 70%;
+    padding: 0;
+
+    transition: border-bottom 0.05s ease,
+                font-size 0.05s ease,
+                width 0.05s ease-in;
+}
+
+#searchField:focus, #searchField.enlarged {
+    outline: none;
+    border-bottom: 2px solid var(--colour-primary-100);
+    font-size: 120%;
+    width: 90%;
 }
 
 .mainContent {
@@ -146,7 +257,7 @@ body {
     color: #d9480f;
   }*/
 
-#productList {
+.productList {
     display: flex;
     flex-direction: row;
     background: gainsboro;
@@ -180,12 +291,24 @@ body {
 #productPageContentWrapper {
     background: white;
     margin: 10px 1.5vw 10px 1.5vw;
-    padding: 1vw;
+    padding: 1.5vw;
     border-radius: 7px;
 }
 
 #productPageName {
     font-size: 160%;
+}
+
+.productPageSubName {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.productPagePrice {
+    font-size: 150%;
+    font-weight: bold;
+    color: var(--colour-secondary-800);
+    margin-left: 2px;
 }
 
 #productPageImageWrapper {
@@ -198,7 +321,7 @@ body {
 #productPageGridWrapper {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: 0.8fr 1fr 1.2fr repeat(2, 2fr);
+    grid-template-rows: 0.8fr 0.6fr 1.2fr repeat(2, 2fr);
 }
 
 #productPageGridWrapper input {
@@ -209,6 +332,7 @@ body {
     display: flex;
     flex-flow: row wrap;
     row-gap: 0.4em;
+    margin-bottom: 10px;
 }
 
 img {
@@ -217,14 +341,20 @@ img {
     user-select: none;
 }
 
-#errorPage {
-    background: radial-gradient(rgb(255, 255, 255, 0.2), rgb(0, 0, 0, 0.2)),
-                radial-gradient(#ececec, #ececec, #b6b6b6);
+.pageTitle {
+    font-size: 120%;
+    font-weight: bold;
+    color: var(--colour-primary-800);
+    margin: 10px 0 0 25px;
 }
 
 #errorPageContentWrapper {
     text-align: center;
     padding: 10em 0 10em 0;
+    margin: 10px 1.5vw 0 1.5vw;
+    border-radius: 7px;
+    background: radial-gradient(rgb(255, 255, 255, 0.2), rgb(0, 0, 0, 0.2)),
+                radial-gradient(#ececec, #ececec, #b6b6b6);
 }
 
 #errorPage h1 {
@@ -244,7 +374,7 @@ img {
     margin-top: 6em;
 }
 
-input {
+input[type=button] {
     cursor: pointer;
     padding: 8px 10px;
     font-weight: bold;
@@ -254,15 +384,18 @@ input {
     border-radius: 3px;
 }
 
-input:hover, .pressed {
+input[type=button]:hover, input[type=button].pressed {
     background: var(--colour-secondary-300);
 }
 
-input:active {
+input[type=button]:active {
     background: var(--colour-secondary-400);
 }
 
-.disabled, .disabled:hover, .disabled:active {
+input[type=button].disabled,
+input[type=button].disabled:hover,
+input[type=button].disabled:active
+{
     background: gray;
     color: #cacaca;
     border: 1px solid #cacaca;
@@ -270,6 +403,7 @@ input:active {
 }
 
 .hyperlink {
+    cursor: pointer;
     font-size: 105%;
     text-decoration: none;
     color: var(--colour-secondary-800);
@@ -277,4 +411,20 @@ input:active {
 
 .hyperlink:hover {
     text-decoration: underline;
+}
+
+/* Too lazy to edit every button in the project */
+.invisible {
+    visibility: collapse;
+    height: 0;
+    margin: 0 !important;
+}
+
+#msgNothingFound {
+    font-size: 150%;
+    font-weight: 800;
+    color: var(--colour-primary-300);
+    margin-left: 40px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }

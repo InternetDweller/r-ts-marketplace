@@ -5,6 +5,7 @@ export interface TypeProduct {
     src: string,
     size: Array<number>,
     rating: number,
+    madeof: string,
 };
 
 export const products: Array<TypeProduct> =[
@@ -15,6 +16,7 @@ export const products: Array<TypeProduct> =[
         src: 'кофта.jpg',
         size: [1, 2, 3, 4, 5],
         rating: 4.5,
+        madeof: 'Состав кофты, состав кофты, состав кофты, состав кофты, состав кофты, состав кофты, состав кофты, состав кофты.',
     },
     {
         id: 2,
@@ -23,6 +25,7 @@ export const products: Array<TypeProduct> =[
         src: 'брюки.jpg',
         size: [2, 4],
         rating: 4.4,
+        madeof: 'Состав брюк, состав брюк, состав брюк, состав брюк, состав брюк, состав брюк.',
     },
     {
         id: 3,
@@ -31,6 +34,7 @@ export const products: Array<TypeProduct> =[
         src: 'отсутствует.jpg',
         size: [],
         rating: 4.7,
+        madeof: 'Состав рубашки, состав рубашки, состав рубашки, состав рубашки, состав рубашки, состав рубашки, состав рубашки, состав рубашки, состав рубашки, состав рубашки.',
     },
     {
         id: 4,
@@ -39,5 +43,6 @@ export const products: Array<TypeProduct> =[
         src: 'отсутствует.jpg',
         size: [2],
         rating: 3.1,
+        madeof: 'Состав футболки, состав футболки, состав футболки, состав футболки, состав футболки, состав футболки.',
     }
 ];

@@ -1,14 +1,14 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import ProductList from '../components/ProductList';
+import ProductFilteredList from '../components/ProductFilteredList';
 import '../css/style.css';
 
-export default function Catalogue() {
+export default function Search() {
     return(
         <div className='mainContent'>
             <Header />
-            <div className='pageTitle'>Каталог товаров</div>
-            <ProductList />
+            <div className='pageTitle'>Результаты поиска</div>
+            <ProductFilteredList />
             <Footer />
         </div>
     );
