@@ -8,18 +8,18 @@ import '../css/style.css';
 import { products, TypeProduct } from '../data/productsData';
 
 export default function Product() {
-    let { productid } = useParams();
+    let { productid } = useParams<string>();
 
     const product: TypeProduct | undefined = products.find(product => product.id === Number(productid));
 
-    const navigate = useNavigate();
+    const navigate: Function = useNavigate();
     useEffect(() => {
         if (product === undefined) {
             navigate('/error');
         };
     });
 
-    function reviewsButtonClick() {
+    function reviewsButtonClick(): void {
         navigate('/reviews');
     };
 
