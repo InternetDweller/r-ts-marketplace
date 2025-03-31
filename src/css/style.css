@@ -1,23 +1,61 @@
+/*https://getbootstrap.com/docs/5.0/customize/color/*/
+:root {
+    --colour-primary-100: #dec9bb;
+    --colour-primary-200: #af937f;
+    --colour-primary-300: #a5836a;
+    --colour-primary-400: #8d6e58;
+    --colour-primary-600: #6c503b;
+    --colour-primary-700: #583f2d;
+    --colour-primary-800: #4c3524;
+    --colour-secondary-100: #a8cbfe;
+    --colour-secondary-200: #81b4fe;
+    --colour-secondary-300: #5a9cfe;
+    --colour-secondary-400: #3485fd;
+    --colour-secondary-600: #0b5cd5;
+    --colour-secondary-700: #094bac;
+    --colour-secondary-800: #073984;
+    --colour-bg: wheat;
+    --colour-panel: #fff3de;
+}
+
 body {
     /*display: flex;*/
     flex-direction: column;
     height: 100%;
+    background: var(--colour-bg);
     /*justify-content: center;*/
 }
 
 .header {
     display: block;
-    background: powderblue;
+    /*background: powderblue;*/
+    background: var(--colour-panel);
+}
+
+.header ul, li {
+    list-style: none;
+}
+
+#headerRibbon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .mainContent {
-    margin-top: 20px;
+    margin-top: 0;
 }
 
 .footer {
     display: block;
     background: wheat;
     /*text-align: center;*/
+}
+
+.footerTitle {
+    font-weight: bold;
+    font-size: 115%;
+    margin-bottom: 10px;
 }
 
 .footerGridWrapper {
@@ -34,12 +72,14 @@ body {
 .footerBox {
     padding: 1em;
     /*margin: 0 1em 0 1em;*/
-    background: rgb(255, 243, 222);
+    background: var(--colour-panel);
     border-radius: 10px;
 }
 
 .box1 {
-    background: none;
+    /* Это фон QR-кода */
+    /*background: none;*/
+    text-align: center;
 }
 
 .box4 {
@@ -47,15 +87,48 @@ body {
 }
 
 .box5 {
-    grid-column-start: 1;
-    grid-column-end: 6;
-    grid-row-start: 2;
-    grid-row-end: 3;
+    grid-column: 1/6;
+    grid-row: 2/3;
     text-align: center;
 }
 
 #qrImageWrapper {
+    height: 200px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#qrImageWrapper img {
     height: 300px;
+    padding: 7px;
+    border-radius: 20px;
+}
+
+.socialImgWrapper {
+    /*min-height: 2.5em;
+    max-height: 3em;*/
+    height: 2.5em;
+}
+
+.socialImgWrapper img {
+    min-height: 2.5em;
+    min-width: 2.5em;
+}
+
+/*#socialWrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+#socialWrapper div {
+    margin: 0.5vw;
+}*/
+
+#socialWrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5vw;
     text-align: center;
 }
 
@@ -104,9 +177,38 @@ body {
     text-align: center;
 }
 
+#productPageContentWrapper {
+    background: white;
+    margin: 10px 1.5vw 10px 1.5vw;
+    padding: 1vw;
+    border-radius: 7px;
+}
+
+#productPageName {
+    font-size: 160%;
+}
+
 #productPageImageWrapper {
     height: 20em;
     margin: 0.5em;
+    grid-row: 2/6;
+    text-align: center;
+}
+
+#productPageGridWrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 0.8fr 1fr 1.2fr repeat(2, 2fr);
+}
+
+#productPageGridWrapper input {
+    margin-left: 15px;
+}
+
+#sizes {
+    display: flex;
+    flex-flow: row wrap;
+    row-gap: 0.4em;
 }
 
 img {
@@ -140,4 +242,39 @@ img {
 #frog {
     height: 12em;
     margin-top: 6em;
+}
+
+input {
+    cursor: pointer;
+    padding: 8px 10px;
+    font-weight: bold;
+    background: var(--colour-secondary-100);
+    color: var(--colour-secondary-800);
+    border: 1px solid var(--colour-secondary-800);
+    border-radius: 3px;
+}
+
+input:hover, .pressed {
+    background: var(--colour-secondary-300);
+}
+
+input:active {
+    background: var(--colour-secondary-400);
+}
+
+.disabled, .disabled:hover, .disabled:active {
+    background: gray;
+    color: #cacaca;
+    border: 1px solid #cacaca;
+    cursor: default;
+}
+
+.hyperlink {
+    font-size: 105%;
+    text-decoration: none;
+    color: var(--colour-secondary-800);
+}
+
+.hyperlink:hover {
+    text-decoration: underline;
 }
