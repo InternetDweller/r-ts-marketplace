@@ -2,7 +2,7 @@ import '../css/style.css'
 
 interface TypeProps {
     caption: string,
-    onClick: any,
+    onClick: React.MouseEventHandler<HTMLInputElement>,
 }
 
 export default function Button(props: TypeProps) {

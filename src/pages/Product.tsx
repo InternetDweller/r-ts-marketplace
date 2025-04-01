@@ -37,9 +37,9 @@ export default function Product() {
                     <div id='productPageName'><b>{product?.name}</b></div>
                     <div></div>
                     <div id='productPageImageWrapper'><img alt={product?.name} src={`/assets/${product?.src}`} /></div>
-                    <div>⭐ {product?.rating} / 5 <Button caption='Отзывы' onClick={() => navigate('reviews')}/></div>
-                    <div className='productPagePrice'>{product?.price} ₽</div>
-                    <div>
+                    <div id='reviewsWrapper'>⭐ {product?.rating} / 5 <Button caption='Отзывы' onClick={() => navigate('reviews')}/></div>
+                    <div className='productPagePrice'>{product?.price.toLocaleString('ru-RU')} ₽</div>
+                    <div id='sizesWrapper'>
                         <div className='productPageSubName'>Размеры:</div>
                         <div id='sizes'>
                             <ToggleButton inStock={product?.size.includes(1) ? true : false} caption='60-62' onClick={() => handleButtonStates(0)} pressed={buttons[0]} />
@@ -48,9 +48,9 @@ export default function Product() {
                             <ToggleButton inStock={product?.size.includes(4) ? true : false} caption='90-100' onClick={() => handleButtonStates(3)} pressed={buttons[3]} />
                             <ToggleButton inStock={product?.size.includes(5) ? true : false} caption='105-117' onClick={() => handleButtonStates(4)} pressed={buttons[4]} />
                         </div>
-                        <span className={buttons.includes(true) ? '' : 'invisible'}><Button caption='✚ В корзину' onClick={null} /></span>
+                        <span id='toBasket' className={buttons.includes(true) ? '' : ' invisible'}><Button caption='✚ В корзину' onClick={() => console.log('Здесь будет функционал, не могу присвоить значение null типу MouseEventHandler<HTMLInputElement> :<')} /></span>
                     </div>
-                    <div>
+                    <div id='madeOfWrapper'>
                         <div className='productPageSubName'>Состав:</div>
                         <div>{product?.madeof}</div>
                     </div>

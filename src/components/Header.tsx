@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/style.css';
 
@@ -14,17 +14,23 @@ import '../css/style.css';
 
 
 export default function Header() {
-    // Content loads fasther than with an anchor
+    // Content loads faster than with an anchor
     const navigate: Function = useNavigate();
 
     const [search, setSearch] = useState<string>('');
 
-    const handleChange = (e: any) => {
+    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         setSearch(e.target.value);
     };
 
     function handleSearchButtonClick(): void {
         navigate(`/search/${search}`);
+    };
+
+    function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>): void {
+        if (e.key === 'Enter') {
+            navigate(`/search/${search}`);
+        };
     };
 
     return(
@@ -34,7 +40,7 @@ export default function Header() {
                 <div className='headerGridBox textButton' onClick={() => navigate('/error')}>Акция</div>
                 <div className='headerGridBox textButton' onClick={() => navigate('/catalogue')}>Каталог</div>
                 <div className='headerGridBox headerGridBoxSearch'>
-                    <input id='searchField' className={search ? 'enlarged' : ''} placeholder='Поиск' type='text' onChange={handleChange} />
+                    <input id='searchField' className={search ? 'enlarged' : ''} placeholder='Поиск' type='text' onChange={handleChange} onKeyDown={handleKeyDown} />
                     <div id='searchButtonWrapper' onClick={handleSearchButtonClick}><img className='filtered' alt='Поиск' src='/icon-search.svg' /></div>
                 </div>
                 <div></div>

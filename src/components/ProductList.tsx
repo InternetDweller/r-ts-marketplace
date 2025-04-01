@@ -1,9 +1,44 @@
 import ProductCard from './ProductCard';
-import { products } from '../data/productsData';
+import { TypeProduct, products } from '../data/productsData';
+import { useState, useEffect } from 'react';
 
-export default function ProductList() {    
-    const listData: React.ReactElement[] = products.map(product =>
-        <ProductCard key={product.id} id={product.id} name={product.name} price={product.price} src={`/assets/${product.src}`} />
+interface TypeProps {
+    sorting: string,
+    filter: string,
+}
+
+export default function ProductList(props: TypeProps) {
+    const [data, setData] = useState<TypeProduct[]>(products);
+
+    useEffect(() => {
+        let effectedData = [...products];
+
+        switch(props.filter) {
+            case 'male':
+                effectedData = effectedData.filter(item => (item.gender === 'M' || item.gender === 'U'));
+                break;
+            case 'female':
+                effectedData = effectedData.filter(item => (item.gender === 'F' || item.gender === 'U'));
+                break;
+        };
+
+        switch(props.sorting) {
+            case 'alphabet':
+                effectedData = effectedData.sort((item1, item2) => item1.name.localeCompare(item2.name));
+                break;
+            case 'price':
+                effectedData = effectedData.sort((item1, item2) => item1.price - item2.price);
+                break;
+            default:
+                effectedData = effectedData.sort((item1, item2) => item1.id - item2.id);
+                break;
+        };
+        
+        setData(effectedData);
+    }, [props.sorting, props.filter]);
+
+    const listData: React.ReactElement[] = data.map(product =>
+        <ProductCard key={product.id} sizesNum={product.size.length} id={product.id} name={product.name} price={product.price} src={`/assets/${product.src}`} />
     );
 
     return(

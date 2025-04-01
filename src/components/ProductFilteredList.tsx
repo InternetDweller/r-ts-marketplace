@@ -6,10 +6,9 @@ export default function ProductFilteredList() {
     let { query } = useParams<string>();
 
     const filtered = products.filter (product => (product.name).toLowerCase().includes('' + query?.toLowerCase()));
-    console.log(filtered);
 
     const listData: React.ReactElement[] = filtered.map(product =>
-        <ProductCard key={product.id} id={product.id} name={product.name} price={product.price} src={`/assets/${product.src}`} />
+        <ProductCard key={product.id} sizesNum={product.size.length} id={product.id} name={product.name} price={product.price} src={`/assets/${product.src}`} />
     );
 
     return(<>
