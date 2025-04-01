@@ -7,18 +7,22 @@ interface TypeProps {
     price: number,
     src: string,
     sizesNum: number,
+    rating: number,
 };
 
-export default function ProductCard(props: TypeProps) {
+export default function ProductCardRating(props: TypeProps) {
     const navigate: Function = useNavigate();
 
     const link: string = '/product/' + props.id;
 
     return(
-        <div title={props.name} className={'productCard' + (props.sizesNum === 0 ? ' stockout' : '')} onClick={() => navigate(link)}>
+        <div title={props.name} className='productCard withRating' onClick={() => navigate(link)}>
             <div className='productImageWrapper'><img className="productImage" alt={props.name} src={props.src} /></div>
             <div className='productName'>{props.name}</div>
-            <div className='productPriceWrapper'><div className="productPrice">{props.sizesNum === 0 ? 'Отсутствует' : (props.price.toLocaleString('ru-RU') + ' ₽')}</div></div>
+            <div className='productPriceRatingWrapper'>
+                <div className='productRating'>★ {props.rating}</div>
+                <div className="productPriceAtRating">{props.price.toLocaleString('ru-RU') + ' ₽'}</div>
+            </div>
         </div>
     );
 };

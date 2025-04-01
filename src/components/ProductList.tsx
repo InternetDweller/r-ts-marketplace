@@ -37,8 +37,8 @@ export default function ProductList(props: TypeProps) {
         setData(effectedData);
     }, [props.sorting, props.filter]);
 
-    const listData: React.ReactElement[] = data.map(product =>
-        <ProductCard key={product.id} sizesNum={product.size.length} id={product.id} name={product.name} price={product.price} src={`/assets/${product.src}`} />
+    const listData: React.ReactElement[] = data.map(item =>
+        <ProductCard key={item.id} sizesNum={item.size.length} id={item.id} name={item.name} price={item.price} src={`/assets/${item.src}`} />
     );
 
     return(

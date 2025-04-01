@@ -2,17 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/style.css';
 
-
-/*
-<ul id='headerRibbon'>
-                <li id='logoWrapper'><a href='/'><img alt='logo' src='/favicon.ico' /></a></li>
-                <li>Каталог</li>
-                <li><img alt='Корзина' src='/icon-basket.svg' /></li>
-                <li><img alt='Профиль' src='/icon-account.svg' /></li>
-            </ul>
-*/
-
-
 export default function Header() {
     // Content loads faster than with an anchor
     const navigate: Function = useNavigate();
@@ -37,7 +26,7 @@ export default function Header() {
         <div className='header'>
             <div id='headerRibbon'>
                 <div className='headerGridBox' id='logoWrapper' onClick={() => navigate('/')}><img alt='logo' src='/favicon.ico' /></div>
-                <div className='headerGridBox textButton' onClick={() => navigate('/error')}>Акция</div>
+                <div className='headerGridBox textButton' onClick={() => navigate('/promo')}>Акция</div>
                 <div className='headerGridBox textButton' onClick={() => navigate('/catalogue')}>Каталог</div>
                 <div className='headerGridBox headerGridBoxSearch'>
                     <input id='searchField' className={search ? 'enlarged' : ''} placeholder='Поиск' type='text' onChange={handleChange} onKeyDown={handleKeyDown} />

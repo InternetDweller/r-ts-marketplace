@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import '../css/style.css';
 import { social } from '../data/socialMedia';
+import '../css/style.css';
 
 // FOR RESPONSIVE GRIDS:
 // https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Realizing_common_layouts_using_grids

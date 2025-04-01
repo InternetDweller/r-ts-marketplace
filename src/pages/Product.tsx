@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'; //get URL link parameters
+import { products, TypeProduct } from '../data/productsData';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Button from '../components/Button';
 import ToggleButton from '../components/ToggleButton';
 import '../css/style.css';
-import { products, TypeProduct } from '../data/productsData';
 
 export default function Product() {
     let { productid } = useParams<string>();
 
     const [buttons, setButtons] = useState<Array<boolean>>([false, false, false, false, false]);
 
-    const product: TypeProduct | undefined = products.find(product => product.id === Number(productid));
+    const product: TypeProduct | undefined = products.find(item => item.id === Number(productid));
 
     const navigate: Function = useNavigate();
     useEffect(() => {
@@ -40,7 +40,7 @@ export default function Product() {
                     <div id='reviewsWrapper'>⭐ {product?.rating} / 5 <Button caption='Отзывы' onClick={() => navigate('reviews')}/></div>
                     <div className='productPagePrice'>{product?.price.toLocaleString('ru-RU')} ₽</div>
                     <div id='sizesWrapper'>
-                        <div className='productPageSubName'>Размеры:</div>
+                        <div className='productPageSubName nameToNewLine'>Размеры:</div>
                         <div id='sizes'>
                             <ToggleButton inStock={product?.size.includes(1) ? true : false} caption='60-62' onClick={() => handleButtonStates(0)} pressed={buttons[0]} />
                             <ToggleButton inStock={product?.size.includes(2) ? true : false} caption='64-72' onClick={() => handleButtonStates(1)} pressed={buttons[1]} />
@@ -51,8 +51,11 @@ export default function Product() {
                         <span id='toBasket' className={buttons.includes(true) ? '' : ' invisible'}><Button caption='✚ В корзину' onClick={() => console.log('Здесь будет функционал, не могу присвоить значение null типу MouseEventHandler<HTMLInputElement> :<')} /></span>
                     </div>
                     <div id='madeOfWrapper'>
-                        <div className='productPageSubName'>Состав:</div>
+                        <div className='productPageSubName nameToNewLine'>Состав:</div>
                         <div>{product?.madeof}</div>
+                    </div>
+                    <div id='productPageGender'>
+                        <div><span className='productPageSubName'>Пол:</span> {product?.gender === 'M' ? 'мужской' : product?.gender === 'F' ? 'женский' : 'мужской, женский'}.</div>
                     </div>
                 </div>
             </div>

@@ -57,7 +57,7 @@ export const products: Array<TypeProduct> =[
         src: 'резинка-6.jpg',
         size: [1],
         rating: 4.8,
-        madeof: 'Ткань, нитки.',
+        madeof: 'Пластмасса.',
         gender: 'F',
     },
     {
@@ -77,7 +77,7 @@ export const products: Array<TypeProduct> =[
         src: 'руб-зел.jpg',
         size: [],
         rating: 4.8,
-        madeof: '-',
+        madeof: 'Хлопок 100%.',
         gender: 'F',
     },
     {
@@ -87,7 +87,7 @@ export const products: Array<TypeProduct> =[
         src: 'руб-св-син.jpg',
         size: [2, 4, 5],
         rating: 4.8,
-        madeof: '-',
+        madeof: 'Хлопок 100%.',
         gender: 'M',
     },
     {
@@ -127,7 +127,7 @@ export const products: Array<TypeProduct> =[
         src: 'отсутствует.jpg',
         size: [4, 5],
         rating: 4.3,
-        madeof: '',
+        madeof: 'Шерсть 70%, хлопок 30%.',
         gender: 'U',
     },
     {
@@ -167,7 +167,7 @@ export const products: Array<TypeProduct> =[
         src: 'брюки-2.jpg',
         size: [],
         rating: 4.3,
-        madeof: '',
+        madeof: 'Состав брюк, состав брюк, состав брюк, состав брюк, состав брюк.',
         gender: 'F',
     },
     {
@@ -177,7 +177,7 @@ export const products: Array<TypeProduct> =[
         src: 'брюки-3.jpg',
         size: [1, 2, 4, 5],
         rating: 4.4,
-        madeof: '',
+        madeof: 'Состав брюк, состав брюк, состав брюк, состав брюк, состав брюк.',
         gender: 'M',
     },
     {
@@ -187,7 +187,7 @@ export const products: Array<TypeProduct> =[
         src: 'перчатки-1.jpg',
         size: [3, 4, 5],
         rating: 4.8,
-        madeof: '',
+        madeof: 'Состав перчаток, состав перчаток, состав перчаток, состав перчаток, состав перчаток, состав перчаток, состав перчаток, состав перчаток, состав перчаток.',
         gender: 'M',
     },
     {
@@ -197,7 +197,7 @@ export const products: Array<TypeProduct> =[
         src: 'носки-1.jpg',
         size: [1, 5],
         rating: 4.5,
-        madeof: '',
+        madeof: 'Состав носков.............',
         gender: 'F',
     },
     {
@@ -207,7 +207,7 @@ export const products: Array<TypeProduct> =[
         src: 'брюки-4.jpg',
         size: [1, 4, 5],
         rating: 4.5,
-        madeof: '',
+        madeof: 'Состав брюк, состав брюк, состав брюк, состав брюк, состав брюк.',
         gender: 'F',
     },
     {
@@ -217,7 +217,7 @@ export const products: Array<TypeProduct> =[
         src: 'носки-3.jpg',
         size: [1, 2, 3, 4, 5],
         rating: 4.8,
-        madeof: '',
+        madeof: 'Состав носков, состав носков, состав носков.',
         gender: 'F',
     },
     {
@@ -227,7 +227,7 @@ export const products: Array<TypeProduct> =[
         src: 'отсутствует.jpg',
         size: [],
         rating: 4.7,
-        madeof: '',
+        madeof: 'Шерсть 100%.',
         gender: 'U',
     },
     {
@@ -236,7 +236,7 @@ export const products: Array<TypeProduct> =[
         price: 100,
         src: 'парик.jpg',
         size: [3, 4],
-        rating: 5,
+        rating: 0,
         madeof: 'Not today but tomorrow!',
         gender: 'U',
     },
@@ -247,7 +247,7 @@ export const products: Array<TypeProduct> =[
         src: 'перчатки-2.jpg',
         size: [1, 2],
         rating: 4.2,
-        madeof: '',
+        madeof: 'Состав перчаток, состав перчаток, состав перчаток, состав перчаток, состав перчаток.',
         gender: 'F',
     },
     {
@@ -257,7 +257,7 @@ export const products: Array<TypeProduct> =[
         src: 'носки-2.jpg',
         size: [1, 4, 5],
         rating: 3.7,
-        madeof: '',
+        madeof: 'Состав носков, состав носков, состав носков, состав носков.',
         gender: 'U',
     },
     {
@@ -267,7 +267,7 @@ export const products: Array<TypeProduct> =[
         src: 'носки-4.jpg',
         size: [2, 3, 4],
         rating: 4.9,
-        madeof: '',
+        madeof: 'Состав носков, состав носков, состав носков, состав носков.',
         gender: 'M',
     },
     {
@@ -277,7 +277,7 @@ export const products: Array<TypeProduct> =[
         src: 'перчатки-3.jpg',
         size: [],
         rating: 4.6,
-        madeof: '',
+        madeof: 'Состав перчаток, состав перчаток, состав перчаток, состав перчаток, состав перчаток.',
         gender: 'F',
     },
 ];
