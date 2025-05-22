@@ -9,7 +9,7 @@ export default function Footer() {
     const navigate: Function = useNavigate();
 
     const socialData: React.ReactElement[] = social.map((item, i) => { // casually mapping data lol
-        return (<a key={i} href={social[i].src}><div className='socialImgWrapper'><img alt={social[i].title} src={social[i].icon}/></div></a>);
+        return (<a key={i} href={social[i].src}><div className='socialImgWrapper'><img alt={social[i].title} src={`/${social[i].icon}`}/></div></a>);
     });
 
     return(
